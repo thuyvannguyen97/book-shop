@@ -1,0 +1,18 @@
+extends ./layouts/common
+block content
+  .container 
+    h4.my-4 Best seller
+    .d-flex
+      each book in books
+        .z-album-item.no-line-height.mb-5(data-index='0', tabindex='-1', style='outline: none; width: 209px;')
+          .col-album
+            a(href='/books/detail/' + book.id)
+              .card-160.--z--reset-height
+                .image.lazyload-img.loaded
+                   img.img-fluid(src=`${book.coverUrl ? book.coverUrl : "https://cdn.glitch.com/665ed219-68bf-423a-8d23-53b168bae5ca%2Fapple-icon-180x180.png?v=1601352243888"}`)   
+            .card-info
+              .title
+                a(title=book.title, href="/books/detail/" + book.id)= book.title
+
+
+      

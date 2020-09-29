@@ -1,0 +1,21 @@
+extends ../layouts/common
+block content
+  .container
+    .d-flex.card.mt-5
+      .row.no-gutters.p-3
+        .col-md-4
+          img.img-fluid(src=`${book.coverUrl ? book.coverUrl : "https://cdn.glitch.com/b5afea55-2ff2-49ba-be5d-73e2b1ac3b55%2Fapple-icon-60x60.png?v=1598791527457"}`)   
+        .col-md-8
+          div.card-body
+            h5.card-title= book.title
+            p.card-text= book.description
+            div
+              a.btn.btn-outline-primary(href="/cart/add/" + book._id) Add To Cart
+    .card.my-5
+      .row.no-gutters.p-3
+        .col-md-4.d-flex.border-right.boder-secondary
+          div.mr-3
+            img.img-64.img-fluid.rounded-circle(src=`${shop.avatarUrl ? shop.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)
+          div
+            div.card-title= shop.name
+            a.btn.btn-outline-secondary(href="/shops/" + shop.id + "/books") View Shop

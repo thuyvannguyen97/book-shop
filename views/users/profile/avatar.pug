@@ -1,0 +1,10 @@
+extends ../../layouts/common
+block content
+  .container.p-5.d-flex.flex-column.align-items-center.bg-light
+    h4 Update Profile Picture
+    div.wrapper.m-5
+      img.img-128.img-fluid.rounded-circle(src=`${user.avatarUrl ? user.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)
+    form(action="", method="POST", enctype="multipart/form-data")
+      .form-group
+        input#avatar.form-control-file(name="avatar", type="file")
+      button.btn.btn-primary Save

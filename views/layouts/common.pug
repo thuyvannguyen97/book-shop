@@ -1,0 +1,76 @@
+html
+  head
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+    link(type='application/manifest+json', rel='manifest', href="/site.webmanifest")
+    link(rel='stylesheet' href='/css/custom.css')
+    link(href='/css/style.css', rel='stylesheet')
+    link(rel='stylesheet', href='/css/header.css') 
+    link(rel='stylesheet', href='/css/book-item.css')
+    link(rel='stylesheet', href='/css/error.css')
+    // icon
+    link(rel='stylesheet', href='https://zjs.zadn.vn/zmp3-desktop/releases/v0.1.20/fonts/icons/styles.css', type='text/css')
+    // Google font (font-family: 'Roboto', sans-serif)
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+  body
+    // header
+    header#header
+      .z-top-bar
+        .--z--top-bar-inner.z-no-login
+          a.z-logo.text-light(href='/') Library
+            img(src='https://cdn.glitch.com/97e88c04-c698-41e8-9769-ecccdb440ae1%2Ffavicon.ico?v=1597337796421')
+          // menu bar
+          .z-menu-bar
+            nav.--z--menu-bar-inner.nav-bar.d-flex
+              ul.z-nav.pri.nav.d-flex.align-items-center.mr-auto
+                li.nav-item.--z--shrink
+                  a.nav-link.text-upper.text-light.active(href='/') Home
+                li.nav-item
+                  a.nav-link.text-upper.text-light(href='/users') Users
+                li.nav-item
+                  a.nav-link.text-upper.text-light(href='/books') Books
+                li.nav-item
+                  a.nav-link.text-upper.text-light(href='/transactions') Transactions
+                li.nav-item
+                  a.nav-link.text-upper.text-light(href= user ? "/shops/" + user.id + "/portal" : "/auth/login") Seller Channel
+              .d-flex.align-items-center
+                a.cart.text-light.d-flex(title="Cart", href='/cart')
+                  svg.bi.bi-cart2(width='2em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                    path(fill-rule='evenodd', d='M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z')
+                  span.ml-1= countCart? countCart : 0
+          // search
+          .z-header-search-wrap
+            form(action="/search", method="get")
+              .react-autosuggest__container(role='combobox', aria-haspopup='listbox', aria-owns='react-autowhatever-1', aria-expanded='false')
+                .z-input-group.header-search-group
+                  label
+                    i.icon.ic-search
+                    .input-wrapper
+                      input.form-control.search(type='text', autocomplete='off', aria-autocomplete='list', aria-controls='react-autowhatever-1', placeholder='Search for a book', value=value, name="q")
+                .--z--clip-header
+          // user profile container
+          .user-profile-container(style='visibility: visible;')
+            .z-login-wrap.pull-right.mx-2.d-flex.flex-column.align-items-center
+              if user
+                .z-card.card-40(style="font-size: .8125rem")
+                  a.thumb-40.mar-right-0(role='button', href="/users/profile")
+                    img(src=`${user.avatarUrl ? user.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)       
+                  a.user.text-light.ml-2.pt-2(href="/users/profile")= user.name
+                  .z-dropdown-table-menu.z-tbl-width-col-1.clearfix.py-1
+                    .z-tbl-col
+                      ul.menu-list
+                        li.menu-item
+                          a(href='/users/profile') My account
+                        li.menu-item
+                          a(href='/transactions/' + user.id) Purchase Menu
+                        li.menu-item
+                          a(href='/auth/logout') Log out
+              else
+                .d-flex.align-items-center.ml-3
+                  a.text-light(href="/auth/login") Login
+                  p.text-light.m-2 |
+                  a.text-light(href="/auth/register") Register   
+      block content
+      

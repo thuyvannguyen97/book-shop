@@ -1,0 +1,20 @@
+extends ../../layouts/common
+block content
+  .container
+    div.wrapper.mt-3.d-flex.flex-column.align-items-center
+      img.img-128.img-fluid.rounded-circle(src=`${user.avatarUrl ? user.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)
+      a.mt-2(href="/users/profile/avatar") Update
+    form(action="", method="POST", enctype="multipart/form-data")
+      .form-group
+        label Name
+        input(class="form-control", type="text", name="name", value= user ? user.name : '')
+      .form-group
+        label Phone
+        input(class="form-control", type="text", name="phone", value= user ? user.phone : '')
+      .form-group
+        label Email
+        input(class="form-control", type="text", name="email", value= user? user.email: '')
+      .form-group
+        label Password
+        input(class="form-control", type="password", name="password")
+      button.btn.btn-primary.mt-2 Save

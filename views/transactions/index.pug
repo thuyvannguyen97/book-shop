@@ -1,0 +1,50 @@
+extends ../layouts/common
+block content
+  .container
+    table.mt-4.table
+      thead.thead-light
+        tr
+          th Book
+          th Status
+      tbody
+        each transaction in transactions
+          tr
+            td= transaction.bookTitle
+            if transaction.isComplete
+              td.text-success Completed
+            else
+              td.text-danger Borrowing
+    if numOfPages > 1
+      nav.mt-3
+        ul.pagination.justify-content-center
+          li.page-item
+              a.page-link(href='/transactions?page=1') First
+
+          li.page-item(class= currentPage === 1 ? 'disabled' : '')
+            a.page-link(href='/transactions?page=' + (currentPage - 1)) &laquo
+
+          if(numOfPages < 3)
+            - for(let i = 1; i <= numOfPages; i++)
+              li.page-item(class = currentPage === i ? 'active' : '')
+                a.page-link(href='/transactions?page=' + i)= i  
+          else
+            if (currentPage === 1) 
+              - for (let i = 1; i <= 3; i++)
+                li.page-item(class= currentPage === i ? 'active' : '')
+                  a.page-link(href='/transactions?page=' + i)= i
+
+            else if (currentPage === numOfPages)
+              - for (let i = 2; i >= 0; i--)
+                li.page-item(class= currentPage === (numOfPages - i) ? 'active' : '')
+                  a.page-link(href='/transactions?page=' + (numOfPages - i))= numOfPages - i
+
+            else      
+              - for (let i = currentPage - 1; i <= currentPage + 1; i++)
+                  li.page-item(class= currentPage === i ? 'active' : '')
+                    a.page-link(href='/transactions?page=' + i)= i
+
+          li.page-item(class= currentPage === numOfPages ? 'disabled' : '')
+            a.page-link(href='/transactions?page=' + (currentPage + 1)) &raquo
+
+          li.page-item
+              a.page-link(href='/transactions?page=' + numOfPages) Last

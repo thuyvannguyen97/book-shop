@@ -1,0 +1,21 @@
+extends ../layouts/common
+block content
+  .container
+    h4.mt-4.mb-4.font-weight-bold Cart
+    .cart-container
+      each book in books
+        .cart-item.d-flex.align-items-center
+          div.d-flex.mr-auto.flex-grow-1.align-items-center
+            div
+              img.cover.img-64.img-fluid(src=`${book.coverUrl ? book.coverUrl : "https://cdn.glitch.com/b5afea55-2ff2-49ba-be5d-73e2b1ac3b55%2Fapple-icon-60x60.png?v=1598791527457"}`)  
+            p.ml-5.flex-grow-1= book.title
+            div= book.quantity
+          div
+            a(href="/cart/delete/" + book.id) Delete
+    if books.length === 0
+      .d-flex.flex-column.align-items-center
+        .mt-5.mb-3(style="font-size: 20px") Cart is empty.
+        a(href='/books') Add book now!
+    else
+      .d-flex.justify-content-end
+        a.btn.btn-danger.mt-5.pl-5.pr-5(href="/cart/checkout") Checkout

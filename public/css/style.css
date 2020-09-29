@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a:hover, a:active {
+    color: #6e55b4;
+}
+
+.--z--disabled {
+    opacity: .1;
+    cursor: default;
+}
+.z-nav {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+}
+.z-nav>li {
+    position: relative;
+    display: inline-block;
+}
+.z-shadow {
+    box-shadow: 0 5px 15px 0 rgba(51,51,51,.1);
+}
+.z-btn {
+    font-size: 12px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    line-height: 24px;
+    border: 0;
+    padding: 4px 12px;
+    background-color: #65509e;
+    color: #fcfcfc;
+    text-transform: initial;
+}
+.z-btn>.icon {
+    position: relative;
+    top: 3px;
+    font-size: 14px;
+}
+.z-typing-text-area, div, p {
+    word-break: break-word;
+}
+.text-upper {
+    text-transform: uppercase!important;
+}
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+.z-center {
+    text-align: center;
+}
+.bor-top {
+    border-top: 1px solid #efefef;
+}
+
+.pull-left {
+    float: left!important;
+}
+.pull-right {
+    float: right!important;
+}
+
+/* z card */
+.z-card {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+.z-card .card-info {
+    white-space: nowrap;
+    position: relative;
+}
+.z-card .card-info .title {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.36;
+    color: #32323d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.z-card .extension .list-buttons {
+    color: #2a2b3f;
+    height: 100%;
+}
+
+.thumb-40 {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.thumb-40>.icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    margin-top: -12px;
+    margin-left: -12px;
+    z-index: 1;
+    color: #fcfcfc;
+    background-color: transparent;
+    opacity: 0;
+    height: 24px;
+    width: 24px;
+}
+.lazyload-img.loaded>img {
+    -webkit-animation: fadeIn 1s both;
+    animation: fadeIn 1s both;
+    width: 100%;
+}
+
+/* input group */
+.z-input-group {
+    position: relative;
+    min-width: 200px;
+    height: 40px;
+}
+.z-input-group .icon {
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: #495057;
+}
+.icon {
+    line-height: 66%;
+}
+.icon, .z-ic-svg {
+    display: inline-block;
+}
+.z-input-group input.form-control {
+    margin: 0;
+    display: inline-block;
+    font-size: 14px;
+    color: #495057;
+    background-clip: padding-box;
+    border: none;
+    /* border: 0; */
+    position: relative;
+    top: 2px;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    padding: 5px 0;
+    background-color: transparent;
+}
+.icon-button {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+.icon-button:hover {
+    background-color: #dbdbdb;
+}
+.slick-list, .slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+}
+:focus {
+    outline: 0;
+}
+input:focus {
+    outline-offset: -2px;
+}
+
+/*opac & player actions */
+.opac {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+    visibility: hidden;
+}
+.player-actions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    color: #fcfcfc;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.player-actions ul {
+    width: 84%;
+    justify-content: space-around;
+    display: flex;
+}
+.player-actions ul li {
+    margin: auto 0;
+}
+.player-actions ul li a>.icon {
+    font-size: 24px;
+    color: #fcfcfc;
+}
+.player-actions .z-tooltip-btn {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 50%;
+    line-height: 0!important;
+}
+.player-actions .z-tooltip-btn:hover {
+    background-color: hsla(0,0%,91%,.46);
+    color: #fcfcfc;
+}
+.player-actions ul li a>.icon.ic-play-circle-outline {
+    font-size: 50px;
+}
