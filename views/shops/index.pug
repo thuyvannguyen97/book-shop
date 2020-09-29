@@ -1,0 +1,36 @@
+extends ../layouts/common
+block content
+  .container
+    h4.my-4= shop.name
+    // books list
+    section.z-recently-listen
+      .container
+        .sub-container.pt-20
+          .row
+            .col-md-12
+              .z-float-header.clearfix
+                .z-box-title.z-show Ch&igrave;m &Dstrok;&#x1EAF;m N&#x1ED7;i Nh&#x1EDB;
+              .box-slide.album-slider
+                #z-slidersel-coffee.z-slidersel.slide
+                  .regular.slider.slick-initialized.slick-slider(dir='ltr')
+                    a.z-slidersel-control-prev.--z--disabled(style='display: block;')
+                      i.icon.ic-go-left
+                    .slick-list
+                      .slick-track(style='opacity: 1; transform: translate3d(0px, 0px, 0px); width: 2090px;')
+                        // book items
+                      each book in books
+                        .z-album-item.no-line-height.slick-slide.slick-active.slick-current.col-md-3.card-209.margin-bottom-30.no-line-height(data-index='0', tabindex='-1', style='outline: none; width: 209px;')
+                          .col-album
+                            a(href='/books/detail' + book.id)
+                              .card-190.--z--reset-height
+                                .image.lazyload-img.loaded
+                                   img.img-fluid(src=`${book.coverUrl ? book.coverUrl : "https://cdn.glitch.com/b5afea55-2ff2-49ba-be5d-73e2b1ac3b55%2Fapple-icon-60x60.png?v=1598791527457"}`)   
+                            .card-info
+                              .title
+                                a(title=book.title, href='/books/detail' + book.id) Bu&#x1ED3;n L&agrave;m Chi Em &#x1A0;i!
+                              .artist
+                        .slick-slide(data-index='5', tabindex='-1', style='outline: none; width: 209px;')
+                    a.z-slidersel-control-next(style='display: block;')
+                      i.icon.ic-go-right
+      .clearfix
+

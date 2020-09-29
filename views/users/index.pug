@@ -1,0 +1,52 @@
+extends ../layouts/common
+block content
+  .container
+    .d-flex.align-items-center.justify-content-end
+      form.form-inline.mt-4(method="get", action="/users/search")
+        input.form-control.mr-sm-2(name="q", value=queryInput)
+        button.btn.btn-success.mt-2.my-sm-0 Search
+    a.btn.btn-primary.mb-4(href="/users/add", class='d-inline-block mb-2 font-weight-bold') Add      
+    table(class="table")
+      thead(class="thead-light")
+        tr
+          th(scope="col") Avatar
+          th(scope="col") Name
+          th(scope="col") Actions
+      tbody
+        each user in users
+          tr
+            td
+              img.img-64.img-fluid.rounded-circle(src=`${user.avatarUrl ? user.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)       
+            td= user.name
+            td
+              a(href="/users/update/"+user.id, class="btn btn-outline-primary mr-2") Update
+              a(href="/users/delete/"+user.id, class="btn btn-outline-danger") Delete
+
+    nav.mt-3
+      ul.pagination.justify-content-center
+        li.page-item
+            a.page-link(href='/users?page=1') First
+
+        li.page-item(class= currentPage === 1 ? 'disabled' : '')
+          a.page-link(href='/users?page=' + (currentPage - 1)) &laquo
+
+        if (currentPage === 1) 
+          - for (let i = 1; i <= 3; i++)
+            li.page-item(class= currentPage === i ? 'active' : '')
+              a.page-link(href='/users?page=' + i)= i
+
+        else if (currentPage === numOfPages)
+          - for (let i = 2; i >= 0; i--)
+            li.page-item(class= currentPage === (numOfPages - i) ? 'active' : '')
+              a.page-link(href='/users?page=' + (numOfPages - i))= numOfPages - i
+
+        else      
+          - for (let i = currentPage - 1; i <= currentPage + 1; i++)
+              li.page-item(class= currentPage === i ? 'active' : '')
+                a.page-link(href='/users?page=' + i)= i
+
+        li.page-item(class= currentPage === numOfPages ? 'disabled' : '')
+          a.page-link(href='/users?page=' + (currentPage + 1)) &raquo
+
+        li.page-item
+            a.page-link(href='/users?page=' + numOfPages) Last

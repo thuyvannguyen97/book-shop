@@ -1,0 +1,19 @@
+extends ../layouts/common
+block content
+  .container
+    h2.mt-3 Update the user
+    if errors
+      each error in errors
+        .alert.alert-danger= error
+    form(method='post', id='update-user', class='m-2')
+      div(class='form-group')
+        label(for='name') Name
+        input(name='name', id='name', type='text', value= values ? values.name : user.name, class='form-control')
+      div(class='form-group')
+        label(for='email') Email
+        input(name='email', id='email', type='email', value= values ? values.email : user.email, class='form-control')
+      div(class='form-group')
+        label(for='phone') Phone number
+        input(name='phone', id='phone', type='text', value=values ? values.phone : user.phone, class='form-control')
+      button(class='btn btn-primary') Update
+    a(href='/users', class='ml-2') Back

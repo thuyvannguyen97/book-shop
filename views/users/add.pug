@@ -1,0 +1,24 @@
+extends ../layouts/common
+block content
+  .container
+    h3.my-3 Add User
+    if errors
+      each error in errors
+        .alert.alert-danger= error
+    form(method="post", action="/users/add", id="add-user")
+      div.form-group
+        label(for="name") Name
+        input.form-control(name="name", id="name", type="text")
+      div.form-group 
+        label(for="phone") Phone
+        input.form-control(name="phone", id="phone", type="text")
+      div.form-group 
+        label(for="email") Email
+        input.form-control(name="email", id="email", type="email")
+      div.form-group 
+        label(for="password") Password
+        input.form-control(name="password", id="password", type="password")
+      .form-check
+        input#isAdmin.form-check-input(type='checkbox', name="isAdmin")
+        label.form-check-label(for='isAdmin') Is Admin
+      button.btn.btn-primary.mt-3 Add

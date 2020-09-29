@@ -1,0 +1,18 @@
+extends ../../layouts/common
+block content
+  .container.d-flex.mt-3
+    nav
+      .sidebar
+        .d-flex.py-3.border-bottom
+          div.avatar.mr-3
+            img.img-64.img-fluid.rounded-circle(src=`${shop.avatarUrl ? shop.avatarUrl : "https://i.ya-webdesign.com/images/default-avatar-png-18.png"}`)
+          div
+            p.seller-username.card-title= shop.name
+            a.seller-edit(href="/users/profile") Edit Profile
+        ul.nav.d-flex.flex-column
+          li.nav-item
+            a.nav-link(href="/shops/" + user.id + "/portal/books") Books Management
+          li.nav-item
+            a.nav-link(href="/shops/" + user.id + "/portal/transactions") Transactions Management
+    .flex-grow-1.d-flex.align-items-center.justify-content-center
+      div.text-secondary(style="font-size: 30px") Seller Channel

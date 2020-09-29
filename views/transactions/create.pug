@@ -1,0 +1,18 @@
+extends ../layouts/common
+block content
+  .container
+    div(class='container-fluid')
+      h4.mt-4 Add a transaction
+      form(method="POST")
+        div(class="form-group")
+          lable(for="user") User name: 
+          select(name="userId", class="form-control")
+            each user in users
+              option(value=user._id)= user.name
+        div(class="form-group")
+          lable Book title: 
+          select(name="bookId", class="form-control")
+            each book in books
+              option(value=book._id)= book.title
+        button(class="btn btn-primary") Create
+      a.d-inline-block.mt-3(href='/transactions') Back

@@ -1,0 +1,57 @@
+extends ../../../layouts/common
+block content
+  .container
+    a.btn.btn-primary.my-3(href="/transactions/create") Create
+    table.mt-3.table
+      thead.thead-light
+        tr
+          th User
+          th Book
+          th Status
+          th.action Actions
+      tbody
+        each transaction in transactions
+          tr
+            td= transaction.userName
+            td= transaction.bookTitle
+            if transaction.isComplete
+              td.text-success Completed
+              td 
+                a.btn.btn-outline-danger(href="/shops/"+ transaction.shopId + "/portal/transactions/delete/" + transaction.id) Delete
+            else
+              td.text-danger Borrowing
+              td
+                a.btn.btn-outline-primary(href="/shops/"+ transaction.shopId + "/portal/transactions/complete/" + transaction.id) Complete
+    nav.mt-3
+      ul.pagination.justify-content-center
+        li.page-item
+            a.page-link(href='/transactions?page=1') First
+
+        li.page-item(class= currentPage === 1 ? 'disabled' : '')
+          a.page-link(href='/transactions?page=' + (currentPage - 1)) &laquo
+
+        if(numOfPages < 3)
+          - for(let i = 1; i <= numOfPages; i++)
+            li.page-item(class = currentPage === i ? 'active' : '')
+              a.page-link(href='/transactions?page=' + i)= i  
+        else
+          if (currentPage === 1) 
+            - for (let i = 1; i <= 3; i++)
+              li.page-item(class= currentPage === i ? 'active' : '')
+                a.page-link(href='/transactions?page=' + i)= i
+
+          else if (currentPage === numOfPages)
+            - for (let i = 2; i >= 0; i--)
+              li.page-item(class= currentPage === (numOfPages - i) ? 'active' : '')
+                a.page-link(href='/transactions?page=' + (numOfPages - i))= numOfPages - i
+
+          else      
+            - for (let i = currentPage - 1; i <= currentPage + 1; i++)
+                li.page-item(class= currentPage === i ? 'active' : '')
+                  a.page-link(href='/transactions?page=' + i)= i
+
+        li.page-item(class= currentPage === numOfPages ? 'disabled' : '')
+          a.page-link(href='/transactions?page=' + (currentPage + 1)) &raquo
+
+        li.page-item
+            a.page-link(href='/transactions?page=' + numOfPages) Last

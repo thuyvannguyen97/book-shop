@@ -1,0 +1,15 @@
+extends ../../../layouts/common
+block content
+  .container
+    h3.my-3 Add Book
+    form(method="post", action="/books/add", id="add-book", enctype="multipart/form-data")
+      div.form-group
+        label(for="title") Title
+        input.form-control(name="title", id="title")
+      div.form-group
+        label(for="description") Description
+        textarea.form-control(name="description", id="description", form="add-book")
+      div.form-group
+        lable(for='cover') Cover
+        input.form-control-file(type="file", name="cover", id="cover")
+      button.btn.btn-primary Add
